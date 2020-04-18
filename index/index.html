@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="">
+    <title>3d Photo Effect with Pixi.js</title>
+</head>
+<body>
+    <!-- <img src="https://i.ibb.co/7S475m4/image1.jpg" alt="image1" border="0"></a>
+    <img src="image1.jpeg"> -->
+
+    <script src="https://pixijs.download/v5.1.6/pixi.min.js"></script>
+    <script>
+        let app = new PIXI.Application({width: window.innerWidth, height: window.innerHeight});
+        document.body.appendChild(app.view);
+
+        let img = new PIXI.Sprite.from("https://i.ibb.co/7S475m4/image1.jpg");
+        img.width = window.innerWidth;
+        img.height = window.innerHeight;
+        app.stage.addChild(img);
+
+        depthMap = new PIXI.Sprite.from("https://i.ibb.co/5T2qnq8/image2.jpg");
+        depthMap.width = window.innerWidth;
+        depthMap.height = window.innerHeight;
+        app.stage.addChild(depthMap);
+
+        displacementFilter = new PIXI.filters.DisplacementFilter(depthMap);
+        app.stage.filters = [displacementFilter];
+
+        window.onmousemove = function(e) {
+            displacementFilter.scale.x = (window.innerWidth / 2 - e.clientX) / 20;
+            displacementFilter.scale.y = (window.innerHeight / 2 - e.clientY) / 20;
+        };
+    </script>
+</body>
+</html>
