@@ -12,17 +12,17 @@
 
     <script src="https://pixijs.download/v5.1.6/pixi.min.js"></script>
     <script>
-        let app = new PIXI.Application({width: 400, height: 700});
+        let app = new PIXI.Application({width: window.innerWidth, height: window.innerHeight});
         document.body.appendChild(app.view);
 
         let img = new PIXI.Sprite.from("https://i.ibb.co/7S475m4/image1.jpg");
-        img.width = 400;
-        img.height = 700;
+        img.width = window.innerWidth;
+        img.height = window.innerHeight;
         app.stage.addChild(img);
 
         depthMap = new PIXI.Sprite.from("https://i.ibb.co/5T2qnq8/image2.jpg");
-        depthMap.width = 400;
-        depthMap.height = 700;
+        depthMap.width = window.innerWidth;
+        depthMap.height = window.innerHeight;
         app.stage.addChild(depthMap);
 
         displacementFilter = new PIXI.filters.DisplacementFilter(depthMap);
